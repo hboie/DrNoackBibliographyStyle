@@ -1,0 +1,3 @@
+- Drücke die Tastenkombination [Windows-Taste] + [R] und tippe in die Ausführen-Zeile den Befehl "%appdata%" ein.
+- Wechsel in das Verzeichnis \Roaming\Microsoft\Bibliography\Style
+- Füge dort die Datei DrNoack.xsl ein
