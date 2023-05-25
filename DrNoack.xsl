@@ -723,7 +723,6 @@
     <xsl:value-of select="/*/b:Locals/b:Local[@LCID=$_LCID]/b:Strings/b:AccessedUnCap"/>
   </xsl:template>
 
-  
   <xsl:template name="templ_str_VolumesAfterShortUnCap" >
     <xsl:param name="LCID" />
     <xsl:variable name="_LCID">
@@ -2206,6 +2205,12 @@
   
   </xsl:template>
 
+
+    <xsl:template name="templ_prop_SimpleDate_DMY" >
+  <xsl:text>%D.%M.%Y</xsl:text>
+  
+  </xsl:template>
+
   
   <xsl:template name="templ_prop_MLA_SameAuthor" >
     <xsl:param name="LCID" />
@@ -3430,12 +3435,12 @@
 
 		<xsl:choose>
 			<xsl:when test="b:Version">
-				<xsl:text>2023.05.21</xsl:text>
+				<xsl:text>2023.05.25</xsl:text>
 			</xsl:when>
 
 
 			<xsl:when test="b:XslVersion">
-				<xsl:text>1</xsl:text>
+				<xsl:text>2</xsl:text>
 			</xsl:when>
 
       <xsl:when test="b:StyleNameLocalized">
@@ -4352,9 +4357,10 @@
 								</xsl:variable>
 
 								                  <xsl:variable name="enclosedDate">
-                  <xsl:if test="string-length($date)>0">
+                  <xsl:if test="string-length(b:Year)>0">
                     <xsl:call-template name="templ_prop_APA_GeneralOpen"/>
-                    <xsl:value-of select="$date"/>
+
+				<xsl:value-of select="b:Year"/>
                     <xsl:call-template name="templ_prop_APA_GeneralClose"/>
                   </xsl:if>
                 </xsl:variable>
@@ -5851,10 +5857,22 @@
 
 										
 											<xsl:otherwise>
-												<xsl:if test="string-length($authorDot)>0">
+<!--												<xsl:if test="string-length($authorDot)>0">
 													<xsl:value-of select="$authorDot"/>
+												</xsl:if> -->
+
+												<xsl:if test="string-length($author)>0">
+													<xsl:value-of select="$author"/>
 												</xsl:if>
 
+												
+                        <xsl:if test="string-length($enclosedDate)>0">
+                          <xsl:call-template name="templ_prop_Space"/>
+                          <xsl:value-of select="$enclosedDate"/>
+                        </xsl:if>
+
+			<xsl:call-template name="templ_prop_Space"/>
+												
 												<xsl:if test="string-length($titleDot)>0">
 													<xsl:if test="string-length($authorDot)>0">
 														<xsl:call-template name="templ_prop_Space"/>
@@ -5867,13 +5885,13 @@
 													<xsl:call-template name="templ_prop_CloseQuote"/>
 												</xsl:if>
 											
-												<xsl:if test="string-length($tempRICPY)>0">
+<!--												<xsl:if test="string-length($tempRICPY)>0">
 													<xsl:if test="string-length($authorDot)>0 or string-length($titleDot)>0">
 														<xsl:call-template name="templ_prop_Space"/>
 													</xsl:if>
 
 													<xsl:value-of select="$tempRICPY"/>
-												</xsl:if>
+												</xsl:if> -->
 
 											</xsl:otherwise>
 
@@ -6878,6 +6896,14 @@
 													</xsl:if>
 												</xsl:if>
 
+												
+                        <xsl:if test="string-length($enclosedDate)>0">
+                          <xsl:call-template name="templ_prop_Space"/>
+                          <xsl:value-of select="$enclosedDate"/>
+                        </xsl:if>
+
+			<xsl:call-template name="templ_prop_Space"/>
+			
 						                        <xsl:if test="string-length($interviewerDot)>0">
 													<xsl:if test="string-length($intervieweeLFDot)>0">
 														<xsl:call-template name="templ_prop_ListSeparator"/>
@@ -8827,7 +8853,8 @@
 				<xsl:when test="string-length($day) != 0 and string-length($month) != 0 and string-length($year) = 0 ">
 				</xsl:when>
 				<xsl:when test="string-length($day) != 0 and string-length($month) != 0 and string-length($year) != 0 ">
-					<xsl:value-of select="$DMY"/>
+<!--					<xsl:value-of select="$DMY"/> -->
+					<xsl:call-template name="templ_prop_SimpleDate_DMY"/>
 				</xsl:when>
 			</xsl:choose>
 		</xsl:variable>
