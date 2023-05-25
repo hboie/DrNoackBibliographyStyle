@@ -3440,7 +3440,7 @@
 
 
 			<xsl:when test="b:XslVersion">
-				<xsl:text>2</xsl:text>
+				<xsl:text>3</xsl:text>
 			</xsl:when>
 
       <xsl:when test="b:StyleNameLocalized">
@@ -6337,13 +6337,13 @@
 													<xsl:value-of select="$prodDot"/>
 												</xsl:if>
 
-												<xsl:if test="string-length($dateDot)>0">
+<!--												<xsl:if test="string-length($dateDot)>0">
 													<xsl:if test="string-length($theAuthorSufixDot)>0 or string-length($titleDot)>0 or string-length($theCPCapLongPrefixEditorDot)>0 or string-length($versionDot)>0 or string-length($prodDot)>0">
 														<xsl:call-template name="templ_prop_Space"/>
 													</xsl:if>
 
 													<xsl:value-of select="$dateDot"/>
-												</xsl:if>
+												</xsl:if> -->
 
 												<xsl:if test="string-length($tempDaU)>0">
 													<xsl:if test="string-length($theAuthorSufixDot)>0 or string-length($titleDot)>0 or string-length($theCPCapLongPrefixEditorDot)>0 or string-length($versionDot)>0 or string-length($dateDot)>0 or string-length($prodDot)>0">
